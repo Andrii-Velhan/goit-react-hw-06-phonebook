@@ -5,6 +5,7 @@
 	margin-bottom: 30px;
 	outline: none;
 	padding: 5px 15px;
+	// border-radius: 2px;
 }
 
 .ContactForm__input:focus,
@@ -19,6 +20,8 @@
 	align-items: flex-start;
 	padding: 15px;
 	border: 1px solid grey;
+	border-radius: 3px;
+	box-shadow: 2px 4px 5px rgba(0.5, 0.2, 0.3, 0.2);
 }
 
 .ContactForm__button {

@@ -2,7 +2,7 @@
   "name": "goit-react-hw-06-phonebook",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://andrii-velhan.github.io/goit-react-hw-06-movies/",
+  "homepage": "https://andrii-velhan.github.io/goit-react-hw-06-phonebook/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",
@@ -15,6 +15,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-transition-group": "^4.4.1",
+    "redux": "^4.0.5",
     "web-vitals": "^1.1.1"
   },
   "scripts": {
