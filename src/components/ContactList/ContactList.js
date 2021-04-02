@@ -5,7 +5,7 @@ import './ContactList.css';
 // import fadeStyles from '../../components/fade.module.css';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import IconButton from '../IconButton';
-import { ReactComponent as DeleteIcon } from '../icons/delete.svg';
+import { ReactComponent as DeleteIcon } from '../../icons/delete.svg';
 
 const ContactList = ({ contacts, onDeleteContact }) => (
 	<TransitionGroup component="ul" className="ContactList">
