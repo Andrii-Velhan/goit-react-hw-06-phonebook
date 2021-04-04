@@ -71,7 +71,7 @@ class ContactForm extends Component {
 						className="ContactForm__input"
 						name="number"
 						onChange={this.handleChange}
-						placeholder="+38 (090) 000-00-00"
+						placeholder="+38 (066) 000-00-00"
 					/>
 
 					<button type="submit" className="ContactForm__button">

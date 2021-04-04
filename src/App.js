@@ -6,12 +6,14 @@ import Container from './components/Container';
 import ContactList from './components/ContactList';
 import ContactForm from './components/ContactForm';
 import Filter from './components/Filter';
-// import initialContacts from "./bd/contacts.json";
 import { CSSTransition } from 'react-transition-group';
-import Notification from './components/Notification';
-import Logo from './components/Logo';
 
-export default class App extends Component {
+import Notification from './components/Notification';
+
+import Logo from './components/Logo';
+import { connect } from 'react-redux';
+
+class App extends Component {
 	static defaultProps = {
 		initialValue: 0,
 	};
@@ -139,3 +141,10 @@ export default class App extends Component {
 		);
 	}
 }
+
+// const mapStateToProps = (state) => ({
+// 	contacts: state.phoneBook.contacts,
+// })
+
+// export default connect(mapStateToProps, null)(App);
+export default App;
