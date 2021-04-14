@@ -12,7 +12,7 @@ const items = (state = [], { type, payload }) => {
   console.log('лог екшена в phoneBook-reduser: ', { type, payload });
   switch (type) {
     case types.ADD:
-      return [...state, payload];
+      return [payload, ...state];
     // return {
     //   ...state,
     //   phoneBook: { ...state.phoneBook.items, payload },
