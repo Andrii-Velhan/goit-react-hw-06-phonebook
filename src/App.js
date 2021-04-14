@@ -1,150 +1,135 @@
 import './App.css';
 import 'modern-normalize/modern-normalize.css';
-import React, { Component } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import React from 'react';
+// import PropTypes from 'prop-types';
+// import { v4 as uuidv4 } from 'uuid';
 import Container from './components/Container';
 import ContactList from './components/ContactList';
 import ContactForm from './components/ContactForm';
 import Filter from './components/Filter';
 import { CSSTransition } from 'react-transition-group';
-
-import Notification from './components/Notification';
-
 import Logo from './components/Logo';
 import { connect } from 'react-redux';
+import phoneBookActions from '../src/redux/phoneBook/phoneBook-actions';
 
-class App extends Component {
-	static defaultProps = {
-		initialValue: 0,
-	};
+const App = ({ items }) => {
+  return (
+    <Container>
+      <Logo />
 
-	static propTypes = {};
+      <ContactForm />
 
-	state = {
-		contacts: [],
-		filter: '',
-		message: null
-	};
+      <Filter />
 
-	setMessage = (note) => {
-		this.setState({ message: note });
-		setTimeout(() => {
-			this.setState({ message: null });
-		}, 2500);
-	}
+      <CSSTransition in={items.length > 0} timeout={500} unmountOnExit>
+        <ContactList />
+      </CSSTransition>
+    </Container>
+  );
+};
 
-	addContact = (name, number) => {
-		const contact = {
-			id: uuidv4(),
-			name,
-			number,
-		};
+// state = {
+// 	message: null
+// };
 
-		if (name === '') {
-			this.setMessage('Enter concact name, please!');
-			return;
-		}
-		if (number === '') {
-			this.setMessage('Enter concact phone number, please!');
-			return;
-		}
-		if (this.state.contacts.find((item) => item.name.toLowerCase() === name.toLowerCase())) {
-			this.setMessage(`${name} is аlready exists in contacts !`);
-			return;
-		}
-		this.setState(prevState => {
-			return { contacts: [...prevState.contacts, contact], };
-		});
+// setMessage = (note) => {
+// 	this.setState({ message: note });
+// 	setTimeout(() => {
+// 		this.setState({ message: null });
+// 	}, 2500);
+// }
 
-		// this.state.contacts.find(
-		// 	// item => item.name === name,
-		// 	item => item.name.toLowerCase() === name.toLowerCase(),
-		// )
-		// 	? alert(`${name} is аlready exists in contacts !!!`)
-		// 	: this.setState(({ contacts }) => ({
-		// 		contacts: [contact, ...contacts],
-		// 	}));
-	};
+// addContact = (name, number) => {
+// 	const contact = {
+// 		id: uuidv4(),
+// 		name,
+// 		number,
+// 	};
 
-	deleteContact = contactId => {
-		this.setState(prevState => ({
-			contacts: prevState.contacts.filter(contact => contact.id !== contactId),
-		}));
-		// console.log(contactId);
-	};
+// if (name === '') {
+// 	this.setMessage('Enter concact name, please!');
+// 	return;
+// }
+// if (number === '') {
+// 	this.setMessage('Enter concact phone number, please!');
+// 	return;
+// }
+// if (this.state.contacts.find((item) => item.name.toLowerCase() === name.toLowerCase())) {
+// 	this.setMessage(`${name} is аlready exists in contacts !`);
+// 	return;
+// }
+// this.setState(prevState => {
+// 	return { contacts: [...prevState.contacts, contact], };
+// });
 
-	changeFilter = event => {
-		this.setState({ filter: event.currentTarget.value });
-	};
+// this.state.contacts.find(
+// 	// item => item.name === name,
+// 	item => item.name.toLowerCase() === name.toLowerCase(),
+// )
+// 	? alert(`${name} is аlready exists in contacts !!!`)
+// 	: this.setState(({ contacts }) => ({
+// 		contacts: [contact, ...contacts],
+// 	}));
 
-	// getVisibleContacts = () => {
-	//   const { contacts, filter } = this.state;
-	//   const normalizedFilter = filter.toLowerCase();
+// deleteContact = contactId => {
+// 	this.setState(prevState => ({
+// 		contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+// 	}));
+// 	// console.log(contactId);
+// };
 
-	//   return normalizedFilter.length > 0
-	//     ? this.state.contacts.filter(contact =>
-	//         contact.name.toLowerCase().includes(normalizedFilter),
-	//       )
-	//     : this.state.contacts;
-	// };
+// changeFilter = event => {
+// 	this.setState({ filter: event.currentTarget.value });
+// };
 
-	componentDidMount() {
-		const contacts = localStorage.getItem('contacts');
-		const parsedContacts = JSON.parse(contacts);
+// getVisibleContacts = () => {
+//   const { contacts, filter } = this.state;
+//   const normalizedFilter = filter.toLowerCase();
 
-		if (parsedContacts) {
-			this.setState({ contacts: parsedContacts });
-		}
-	}
+//   return normalizedFilter.length > 0
+//     ? this.state.contacts.filter(contact =>
+//         contact.name.toLowerCase().includes(normalizedFilter),
+//       )
+//     : this.state.contacts;
+// };
 
-	componentDidUpdate(prevProps, prevState) {
-		if (this.state.contacts !== prevState.contacts) {
-			localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-		}
-	}
+// componentDidMount() {
+// 	const contacts = localStorage.getItem('contacts');
+// 	const parsedContacts = JSON.parse(contacts);
 
-	render() {
-		const { filter, contacts, message } = this.state;
-		const normalizedFilter = filter.toLowerCase();
-		const totalContactsCount = this.state.contacts.length;
-		const visibleContacts =
-			normalizedFilter.length > 0
-				? this.state.contacts.filter(contact =>
-					contact.name.toLowerCase().includes(normalizedFilter),
-				)
-				: this.state.contacts;
+// 	if (parsedContacts) {
+// 		this.setState({ contacts: parsedContacts });
+// 	}
+// }
 
-		return (
-			<Container>
+// componentDidUpdate(prevProps, prevState) {
+// 	if (this.state.contacts !== prevState.contacts) {
+// 		localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+// 	}
+// }
 
-				<Logo />
+// const { filter, contacts, message } = this.state;
+// const normalizedFilter = filter.toLowerCase();
+// const totalContactsCount = this.state.contacts.length;
+// const visibleContacts =
+// 	normalizedFilter.length > 0
+// 		? this.state.contacts.filter(contact =>
+// 			contact.name.toLowerCase().includes(normalizedFilter),
+// 		)
+// 		: this.state.contacts;
 
-				<Notification message={message} />
+// App.propTypes = {
+// 	contacts: PropTypes.arrayOf(PropTypes.object),
+// };
 
-				<p>Total contacts count: {totalContactsCount}</p>
+const mapStateToProps = state => ({
+  items: state.phoneBook.items,
+});
 
-				<ContactForm onSubmit={this.addContact} />
+// const mapDispatchToProps = dispatsh => ({
+//   onAddContact: e => dispatsh(phoneBookActions.addContact(e.target.value)),
+//   // onChangeFilter: e => dispatsh(phoneBookActions.changeFilter(e.target.value)),
+// });
 
-				<Filter value={filter} onChangeFilter={this.changeFilter} contacts={contacts} />
-
-				<CSSTransition
-					in={contacts.length > 0}
-					timeout={500}
-					unmountOnExit>
-					<ContactList
-						contacts={visibleContacts}
-						onDeleteContact={this.deleteContact}
-					/>
-				</CSSTransition>
-
-			</Container>
-		);
-	}
-}
-
-// const mapStateToProps = (state) => ({
-// 	contacts: state.phoneBook.contacts,
-// })
-
-// export default connect(mapStateToProps, null)(App);
-export default App;
+export default connect(mapStateToProps)(App);
+// export default connect(mapStateToProps, mapDispatchToProps)(App);

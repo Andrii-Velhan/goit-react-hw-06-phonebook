@@ -9,18 +9,18 @@ import { phoneBookActions } from './redux/phoneBook/phoneBook-actions';
 import { Provider } from 'react-redux';
 
 console.log(store);
-// console.log(store.getState());
+console.log(store.getState());
 
 // store.dispatch(phoneBookActions);
 // store.dispatch(myAction(10));
 
 ReactDOM.render(
-	<React.StrictMode>
-		<Provider store={store}>
-			<App />
-		</Provider>
-	</React.StrictMode>,
-	document.getElementById('root')
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById('root'),
 );
 
 // If you want to start measuring performance in your app, pass a function
