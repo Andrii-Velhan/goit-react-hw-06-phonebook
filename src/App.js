@@ -19,6 +19,8 @@ const App = ({ items }) => {
 
       <ContactForm />
 
+      {/* {(items.length > 1 || items.phoneBook.filter) && <Filter />}	 */}
+      {/* {(items.length > 1) && <Filter />} */}
       <Filter />
 
       <CSSTransition in={items.length > 0} timeout={500} unmountOnExit>

@@ -93,6 +93,7 @@ class ContactForm extends Component {
             name="name"
             onChange={this.handleChange}
             placeholder="Anton Cherny"
+            autoFocus
           />
 
           <label className="Label" htmlFor="number">
@@ -104,6 +105,8 @@ class ContactForm extends Component {
             id="number"
             className="ContactForm__input"
             name="number"
+            pattern="(\+?( |-|\.)?\d{1,2}( |-|\.)?)?(\(?\d{3}\)?|\d{3})( |-|\.)?(\d{3}( |-|\.)?\d{4})"
+            required
             onChange={this.handleChange}
             placeholder="+38 (066) 000-00-00"
           />

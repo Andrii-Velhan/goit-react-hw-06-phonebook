@@ -5,12 +5,13 @@ import { CSSTransition } from 'react-transition-group';
 import phoneBookActions from '../../redux/phoneBook/phoneBook-actions';
 import { connect } from 'react-redux';
 
-const Filter = ({ value, onChangeFilter, items }) => (
+const Filter = ({ value, onChangeFilter, onClearFilter, items }) => (
   <CSSTransition
     in={items.length > 1}
     timeout={250}
     classNames="Filter-fade"
     unmountOnExit
+    onExiting={() => onClearFilter()}
   >
     <div className="filterForm">
       <label htmlFor="find" className="Label filterLabel">
@@ -41,6 +42,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatsh => ({
   onChangeFilter: e => dispatsh(phoneBookActions.changeFilter(e.target.value)),
+  onClearFilter: e => dispatsh(phoneBookActions.changeFilter('')),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filter);
