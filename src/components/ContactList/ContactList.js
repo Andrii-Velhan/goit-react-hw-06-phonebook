@@ -45,10 +45,8 @@ ContactList.propTypes = {
 };
 
 const getVisibleContacts = (allContacts, filter) => {
-  // const { filter, contacts } = this.state;
   const normalizedFilter = filter.toLowerCase();
-  //   const normalizedContacts = contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter));
-  //  console.log(normalizedContacts);
+
   let list = allContacts.filter(({ name }) =>
     name.toLowerCase().includes(normalizedFilter),
   );
