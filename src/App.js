@@ -1,7 +1,7 @@
 import './App.css';
 import 'modern-normalize/modern-normalize.css';
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 // import { v4 as uuidv4 } from 'uuid';
 import Container from './components/Container';
 import ContactList from './components/ContactList';
@@ -10,7 +10,7 @@ import Filter from './components/Filter';
 import { CSSTransition } from 'react-transition-group';
 import Logo from './components/Logo';
 import { connect } from 'react-redux';
-import phoneBookActions from '../src/redux/phoneBook/phoneBook-actions';
+// import phoneBookActions from '../src/redux/phoneBook/phoneBook-actions';
 
 const App = ({ items }) => {
   return (
@@ -29,6 +29,19 @@ const App = ({ items }) => {
     </Container>
   );
 };
+
+App.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.object),
+};
+
+const mapStateToProps = state => ({
+  items: state.phoneBook.items,
+});
+
+export default connect(mapStateToProps, null)(App);
+// export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+//========== old-code: ===========
 
 // state = {
 // 	message: null
@@ -119,19 +132,3 @@ const App = ({ items }) => {
 // 			contact.name.toLowerCase().includes(normalizedFilter),
 // 		)
 // 		: this.state.contacts;
-
-// App.propTypes = {
-// 	contacts: PropTypes.arrayOf(PropTypes.object),
-// };
-
-const mapStateToProps = state => ({
-  items: state.phoneBook.items,
-});
-
-// const mapDispatchToProps = dispatsh => ({
-//   onAddContact: e => dispatsh(phoneBookActions.addContact(e.target.value)),
-//   // onChangeFilter: e => dispatsh(phoneBookActions.changeFilter(e.target.value)),
-// });
-
-export default connect(mapStateToProps)(App);
-// export default connect(mapStateToProps, mapDispatchToProps)(App);

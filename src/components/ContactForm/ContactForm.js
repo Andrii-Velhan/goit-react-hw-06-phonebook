@@ -66,9 +66,6 @@ class ContactForm extends Component {
       this.setMessage(`Contact ${name} is аlready exists!`);
       return;
     }
-    // this.setState(prevState => {
-    //   return { contacts: [...prevState.contacts, contact] };
-    // });
     this.props.onSubmit(name, number);
     this.setState({
       name: '',
@@ -105,7 +102,7 @@ class ContactForm extends Component {
             id="number"
             className="ContactForm__input"
             name="number"
-            pattern="(\+?( |-|\.)?\d{1,2}( |-|\.)?)?(\(?\d{3}\)?|\d{3})( |-|\.)?(\d{3}( |-|\.)?\d{4})"
+            // pattern="(\+?( |-|\.)?\d{1,2}( |-|\.)?)?(\(?\d{3}\)?|\d{3})( |-|\.)?(\d{3}( |-|\.)?\d{4})"
             required
             onChange={this.handleChange}
             placeholder="+38 (066) 000-00-00"

@@ -1,13 +1,6 @@
 import { combineReducers } from 'redux';
 import types from './phoneBook-types';
 
-const initialState = {
-  phoneBook: {
-    items: [],
-    filter: '',
-  },
-};
-
 const items = (state = [], { type, payload }) => {
   console.log('лог екшена в phoneBook-reduser: ', { type, payload });
   switch (type) {
@@ -15,7 +8,7 @@ const items = (state = [], { type, payload }) => {
       return [payload, ...state];
     // return {
     //   ...state,
-    //   phoneBook: { ...state.phoneBook.items, payload },
+    //   phoneBook: { payload, ...state.phoneBook.items },
     // };
 
     case types.REMOVE:
