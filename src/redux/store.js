@@ -1,11 +1,19 @@
-import { createStore, combineReducers } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import phoneBookReducer from './phoneBook/phoneBook-reducer';
+import logger from 'redux-logger';
 
-const rootReducer = combineReducers({
-  phoneBook: phoneBookReducer,
+// console.log(process.env.NODE_ENV);
+// console.log(getDefaultMiddleware);
+
+const middleware = [...getDefaultMiddleware(), logger];
+
+// const store = createStore(rootReducer, composeWithDevTools());
+const store = configureStore({
+  reducer: {
+    phoneBook: phoneBookReducer,
+  },
+  middleware,
+  devTools: process.env.NODE_ENV === 'development',
 });
-
-const store = createStore(rootReducer, composeWithDevTools());
 
 export default store;
