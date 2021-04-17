@@ -7,7 +7,7 @@ import Container from './components/Container';
 import ContactList from './components/ContactList';
 import ContactForm from './components/ContactForm';
 import Filter from './components/Filter';
-import { CSSTransition } from 'react-transition-group';
+// import { CSSTransition } from 'react-transition-group';
 import Logo from './components/Logo';
 import { connect } from 'react-redux';
 // import phoneBookActions from '../src/redux/phoneBook/phoneBook-actions';
@@ -23,9 +23,9 @@ const App = ({ items }) => {
       {/* {(items.length > 1) && <Filter />} */}
       <Filter />
 
-      <CSSTransition in={items.length > 0} timeout={500} unmountOnExit>
-        <ContactList />
-      </CSSTransition>
+      {/* <CSSTransition in={items.length > 0} timeout={500} unmountOnExit> */}
+      <ContactList />
+      {/* </CSSTransition> */}
     </Container>
   );
 };
