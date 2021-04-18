@@ -1,27 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-// import store from './redux/phoneBook/phoneBook-reducer';
-import store from './redux/store';
-// import { phoneBookActions } from './redux/phoneBook/phoneBook-actions';
-import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-
-// console.log(store);
-// console.log(store.getState());
-
-// store.dispatch(phoneBookActions);
-// store.dispatch(myAction(10));
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import App from './App';
+import store from './redux/store';
+import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </BrowserRouter>
+    <Provider store={store.store}>
+      <PersistGate loading={null} persistor={store.persistor}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </PersistGate>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
