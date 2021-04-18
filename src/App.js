@@ -12,7 +12,7 @@ import Logo from './components/Logo';
 import { connect } from 'react-redux';
 // import phoneBookActions from '../src/redux/phoneBook/phoneBook-actions';
 
-const App = ({ items }) => {
+const App = () => {
   return (
     <Container>
       <Logo />
