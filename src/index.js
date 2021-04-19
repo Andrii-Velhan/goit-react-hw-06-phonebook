@@ -3,26 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-// import store from './redux/phoneBook/phoneBook-reducer';
 import store from './redux/store';
-// import { phoneBookActions } from './redux/phoneBook/phoneBook-actions';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
-// console.log(store);
-// console.log(store.getState());
-
-// store.dispatch(phoneBookActions);
-// store.dispatch(myAction(10));
-
 ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </BrowserRouter>
-  </React.StrictMode>,
+  <BrowserRouter>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </BrowserRouter>,
   document.getElementById('root'),
 );
 
