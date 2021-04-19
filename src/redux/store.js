@@ -27,7 +27,7 @@ const phoneBookPersistConfig = {
   storage,
   blacklist: ['filter'],
 };
-// const store = createStore(rootReducer, composeWithDevTools());
+
 const store = configureStore({
   reducer: {
     phoneBook: persistReducer(phoneBookPersistConfig, phoneBookReducer),

@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import './Filter.scss';
 import { CSSTransition } from 'react-transition-group';
-// import * as actions from '../../redux/phoneBook/phoneBook-actions'
 import phoneBookActions from '../../redux/phoneBook/phoneBook-actions';
 import { connect } from 'react-redux';
 
@@ -23,7 +22,6 @@ const Filter = ({ value, onChangeFilter, onClearFilter, items }) => (
         id="find"
         className="filterInput"
         onChange={onChangeFilter}
-        // onChange={event => onChangeFilter(event.target.value)}
       />
     </div>
   </CSSTransition>
