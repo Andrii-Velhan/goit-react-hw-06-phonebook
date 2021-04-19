@@ -1,16 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { v4 as uuidv4 } from 'uuid';
 import './ContactList.css';
-// import fadeStyles from '../../components/fade.module.css';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import IconButton from '../IconButton';
 import { ReactComponent as DeleteIcon } from '../../icons/delete.svg';
 import { connect } from 'react-redux';
 import phoneBookActions from '../../redux/phoneBook/phoneBook-actions';
 
-// contacts={visibleContacts}
-// onRemoveContact={this.deleteContact}
 const ContactList = ({ items, onRemoveContact }) => {
   return (
     <TransitionGroup component="ul" className="ContactList">
@@ -50,10 +46,7 @@ const getVisibleContacts = (allContacts, filter) => {
   let list = allContacts.filter(({ name }) =>
     name.toLowerCase().includes(normalizedFilter),
   );
-  // if (!list.length) list = contacts
-  // if (filter !== '' && list.length === 0) {
-  //  alert('Sorry, nothing was found for your request.');
-  // }
+ 
   return list;
 };
 

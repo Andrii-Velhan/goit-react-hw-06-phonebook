@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import { v4 as uuidv4 } from 'uuid';
 import './ContactForm.scss';
 import Notification from '../Notification';
 import { connect } from 'react-redux';
@@ -42,7 +41,6 @@ class ContactForm extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const { name, number } = this.state;
-    // const { contacts } = this.props;
 
     if (name === '') {
       this.setMessage('Enter concact name, please!');
@@ -126,5 +124,4 @@ const mapDispatchToProps = dispatch => ({
     dispatch(phoneBookActions.addContact({ name, number })),
 });
 
-// export default connect(null, mapDispatchToProps)(ContactForm);
 export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
